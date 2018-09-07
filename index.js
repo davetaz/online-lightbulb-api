@@ -32,6 +32,15 @@ function returnState(req,res) {
     url = "bulb.html";
     if (bulbId) {
         result.push({"bulbId": bulbId, "isOn": bulbs[bulbId].isOn });
+        if (ext == "hk") {
+            res.set('Content-Type', 'text/plain');
+            if (bulbs[bulbId].isOn) {
+                res.send("1");
+            } else {
+                res.send("0");
+            }
+            return;
+        }
     } else {
         url = "grid.html";
         for (i=1;i<11;i++) {
