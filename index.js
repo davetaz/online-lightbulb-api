@@ -3,7 +3,10 @@ const ejs = require('ejs'); // Library to render HTML pages for web browsers
 var json2csv = require('json2csv'); // Library to create CSV for output
 
 const app = express(); // Initialise the REST app
-app.use(express.static('public'))
+app.use(express.static('public'));
+
+var port = process.env.PORT || 8080;
+
 var bulbs = [];
 
 for (i=1;i<11;i++) {
@@ -80,4 +83,4 @@ app.get('/', function(req,res) { showBulb(req,res); });
 /*
  * Start the app!
  */
-app.listen(8080, () => console.log('Example app listening on port 8080!'));
+app.listen(port, () => console.log('Example app listening on port ' + port));
